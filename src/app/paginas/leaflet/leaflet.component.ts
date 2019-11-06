@@ -26,28 +26,26 @@ export class LeafletComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.map = L.map(this.mapElement.nativeElement, {
-      center: [-16.6799, -49.255],
-      zoom: 10,
+      center: [48.225897, 11.674274],
+      zoom: 14,
       zoomControl: true
     });
-
     L.tileLayer(this.urlTemplate, this.options).addTo(this.map);
-
-    this.leafletPmDrawerMode();
+    
+    this.toolbar();
   }
 
-  public mousePosition() {
-    L.control.mousePosition({ prefix: "<b>LATLGN</b>" }).addTo(this.map);
-  }
-
-  private leafletPmDrawerMode() {
+  private toolbar() {
     this.map.pm.addControls({
       position: 'topleft',
-      drawCircle: false,
+      drawCircleMarker: false,
     });
 
     this.map.pm.setLang('pt_br');
     this.mousePosition();
   }
 
+  public mousePosition() {
+    L.control.mousePosition({ prefix: "<b>LATLGN</b>" }).addTo(this.map);
+  }
 }
