@@ -1,3 +1,7 @@
+/**
+ * Você deve encontrar mais opções de mapas
+ * nesse link https://leaflet-extras.github.io/leaflet-providers/preview/
+ */
 export class Constants {
 
     public static get URL_TEMPLATE(): string {
