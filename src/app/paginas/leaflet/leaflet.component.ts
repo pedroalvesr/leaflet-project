@@ -46,6 +46,7 @@ export class LeafletComponent implements OnInit {
       drawCircle: false,
     });
 
+    this.map.pm.setLang('pt_br');
     this.mousePosition();
   }
 
