@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
-import { Constants } from './../../core/util/constants';
 import L from 'leaflet';
 import 'leaflet-mouse-position';
+import '@geoman-io/leaflet-geoman-free';
+
+import { Constants } from './../../core/util/constants';
 
 @Component({
   selector: 'app-leaflet',
@@ -20,8 +22,7 @@ export class LeafletComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   ngAfterViewInit(): void {
     this.map = L.map(this.mapElement.nativeElement, {
@@ -32,11 +33,20 @@ export class LeafletComponent implements OnInit {
 
     L.tileLayer(this.urlTemplate, this.options).addTo(this.map);
 
-    this.mousePosition();
+    this.leafletPmDrawerMode();
   }
 
   public mousePosition() {
     L.control.mousePosition({ prefix: "<b>LATLGN</b>" }).addTo(this.map);
+  }
+
+  private leafletPmDrawerMode() {
+    this.map.pm.addControls({
+      position: 'topleft',
+      drawCircle: false,
+    });
+
+    this.mousePosition();
   }
 
 }
